@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${tickets} and ${tickets.size()}">no tickets :(</p>
+
+<table class="table">
+
+    <tr>
+        <th>Ticket #</th>
+        <th>Requester</th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Site</th>
+
+    </tr>
+
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.requester}"></td>
+        <td th:text="${ticket.subject}"></td>
+        <td th:text="${ticket.description}"></td>
+        <td th:text="${ticket.site}"></td>
+
+    </tr>
+</table>
+
+<div>
+    <a href="/ticket/add">Add Ticket</a>
+    <a href="/ticket/edit">Edit Ticket</a>
+</div>
+
+
+
+
+
+</body>
+</html>
