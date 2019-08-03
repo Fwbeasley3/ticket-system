@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 public class Ticket {
@@ -28,7 +29,11 @@ public class Ticket {
     private String requester;
 
     @NotNull
-    private String site;
+    private String location;
+
+    private String resolution;
+
+    private Date date = new Date();
 
 
 
@@ -38,10 +43,12 @@ public class Ticket {
     public Ticket(){
 
     }
-    public Ticket(String subject, String description,String requester) {
+    public Ticket(String subject, String description,String requester,String location) {
         this.subject = subject;
         this.description = description;
         this.requester = requester;
+        this.location = location;
+
 
 
     }
@@ -80,11 +87,27 @@ public class Ticket {
         this.requester = requester;
     }
 
-    public String getSite() {
-        return site;
+    public String getLocation() {
+        return location;
     }
 
-    public void setSite(String site) {
-        this.site = site;
+    public void setLocation(String site) {
+        this.location = site;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
     }
 }

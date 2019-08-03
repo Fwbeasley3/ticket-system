@@ -35,7 +35,7 @@ public class TicketController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddTicketForm(Model model) {
         model.addAttribute("title", "Add Ticket");
-       model.addAttribute(new Ticket());
+        model.addAttribute(new Ticket());
         return "ticket/add";
 
     }
@@ -53,25 +53,19 @@ public class TicketController {
 
     }
 
-    //@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-    //public String displayEditForm(Model model, @PathVariable int id) {
-
-      //  Ticket ticket = ticketDao.findOne(id);    //look up cheese object by id
-       // model.addAttribute("title", ticket.getSubject());//pass ticket object to model
-       // model.addAttribute("description", ticket.getDescription());
-       // model.addAttribute("id", id);
-
-        //return "ticket/edit";
+    @RequestMapping(value= "view/{id}")
+    public String viewPost(@PathVariable("id")Integer id, Model model){
+       Ticket ticket = ticketDao.findOne(id);
+       model.addAttribute("ticket",ticket);
 
 
-    //}
 
-    //@RequestMapping(value = "edit", method = RequestMethod.POST)
-    //public String processEditForm(int id, String subject, String description ,Model model) {
-      //  Ticket ticket = ticketDao.findOne(id);     //look up cheese object by id
 
-        //ticketDao.save(ticket);
-        //return "redirect:";
 
-    //}
+       return "ticket/view";
+    }
+
+
 }
+
+

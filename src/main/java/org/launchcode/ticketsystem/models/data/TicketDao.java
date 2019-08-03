@@ -9,4 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface TicketDao extends CrudRepository <Ticket, Integer>{
+
 }

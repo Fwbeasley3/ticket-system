@@ -10,30 +10,44 @@
 
 <p th:unless="${tickets} and ${tickets.size()}">no tickets :(</p>
 
+
+
+
+
 <table class="table">
 
     <tr>
-        <th>Ticket #</th>
+        <th>ID</th>
         <th>Requester</th>
         <th>Subject</th>
-        <th>Description</th>
-        <th>Site</th>
+        <th>Location</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Created</th>
+
+
+
 
     </tr>
 
-    <tr th:each="ticket : ${tickets}">
+    <tr th:each="ticket : ${tickets}" >
         <td th:text="${ticket.id}"></td>
         <td th:text="${ticket.requester}"></td>
-        <td th:text="${ticket.subject}"></td>
-        <td th:text="${ticket.description}"></td>
-        <td th:text="${ticket.site}"></td>
-
+        <td >
+            <a href="#" th:text="${ticket.subject}" th:href="@{view/{id}/(id=${ticket.id})}" />
+        </td>
+        <td th:text="${ticket.location}"></td>
+        <td></td>
+        <td></td>
+        <td th:text="${ticket.date}"></td>
     </tr>
 </table>
 
+
+
 <div>
     <a href="/ticket/add">Add Ticket</a>
-    <a href="/ticket/edit">Edit Ticket</a>
+
 </div>
 
 
