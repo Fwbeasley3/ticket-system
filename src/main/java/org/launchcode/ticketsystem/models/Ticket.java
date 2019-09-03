@@ -2,13 +2,12 @@ package org.launchcode.ticketsystem.models;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Ticket {
@@ -34,6 +33,11 @@ public class Ticket {
     private String resolution;
 
     private Date date = new Date();
+
+    @ManyToOne
+    private Priority priority;      //when a Ticket object is stored, this column will contain the id of its priority object. The data for the priority object itself will go in the table for the Priority class.
+
+
 
 
 
@@ -109,5 +113,13 @@ public class Ticket {
 
     public void setResolution(String resolution) {
         this.resolution = resolution;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 }

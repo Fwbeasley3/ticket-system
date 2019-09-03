@@ -24,6 +24,7 @@
         <th>Priority</th>
         <th>Status</th>
         <th>Created</th>
+        <th>Edit</th>
 
 
 
@@ -37,9 +38,12 @@
             <a href="#" th:text="${ticket.subject}" th:href="@{view/{id}/(id=${ticket.id})}" />
         </td>
         <td th:text="${ticket.location}"></td>
-        <td></td>
-        <td></td>
+        <td th:text="${ticket.priority.name}"></td>
+        <td ></td>
         <td th:text="${ticket.date}"></td>
+        <td>
+            <a th:href="@{'/ticket/edit/' + ${ticket.id}}">Edit</a>
+        </td>
     </tr>
 </table>
 

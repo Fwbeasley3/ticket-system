@@ -4,9 +4,10 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="'Edit \'' + ${ticket.subject} + '\' (ID: ' + ${ticket.id} + ')'"></h1>
 
 <nav th:replace="fragments :: navigation"></nav>
+
 <form method="post" style="max-width:600px;" th:object="${ticket}">
     <div class="form-group">
         <label th:for="requester">Requester</label>
@@ -33,22 +34,23 @@
         <textarea rows="10" class="form-control" th:field="*{resolution}" />
         <span th:errors="*{resolution}" class="error"></span>
     </div>
-    <div class="form-group">                   <!--This loops over the list of categories, using the name and id properties to set up each value. -->
-        <label th:for="type">Priority</label>
-        <select name="priorityId">
-            <option th:each="priority : ${priorities}"
-                    th:text="${priority.name}"
-                    th:value="${priority.id}"></option>
-        </select>
-    </div>
+    <label th:for="type">Priority</label>
+    <select name="priorityId">
+        <option th:each="priority : ${priorities}"
+                th:text="${priority.name}"
+                th:value="${priority.id}"></option>
+    </select>
+
+    <input type="hidden" name="id" th:value="*{id}" />
+    <input type="submit" value="Update" />
 
 
-    <input type="submit" value="Update Ticket" />
 
 </form>
 
 </body>
 </html>
+
 
 
 
