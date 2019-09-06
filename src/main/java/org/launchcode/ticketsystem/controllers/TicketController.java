@@ -1,10 +1,8 @@
 package org.launchcode.ticketsystem.controllers;
 
 
-import org.launchcode.ticketsystem.models.Priority;
-import org.launchcode.ticketsystem.models.Ticket;
-import org.launchcode.ticketsystem.models.data.PriorityDao;
-import org.launchcode.ticketsystem.models.data.TicketDao;
+import org.launchcode.ticketsystem.models.*;
+import org.launchcode.ticketsystem.models.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +22,15 @@ public class TicketController {
     @Autowired
     private PriorityDao priorityDao;
 
+    @Autowired
+    private StatusDao statusDao;
+
+    @Autowired
+    private MethodDao methodDao;
+
+    @Autowired
+    private CategoryDao categoryDao;
+
     @RequestMapping(value = "")
     public String index(Model model) {
 
@@ -40,21 +47,36 @@ public class TicketController {
         model.addAttribute("title", "Add Ticket");
         model.addAttribute(new Ticket());
         model.addAttribute("priorities", priorityDao.findAll());
+        model.addAttribute("statuses", statusDao.findAll());
+        model.addAttribute("methods", methodDao.findAll());
+        model.addAttribute("categories", categoryDao.findAll());
         return "ticket/add";
 
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddTicketForm(@ModelAttribute @Valid Ticket newTicket, Errors errors, @RequestParam int priorityId, Model model) {
+    public String processAddTicketForm(@ModelAttribute @Valid Ticket newTicket, Errors errors, @RequestParam int priorityId,
+                                       @RequestParam int statusId, @RequestParam int methodId, @RequestParam int categoryId, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Ticket");
             model.addAttribute("priorities", priorityDao.findAll());
+            model.addAttribute("statuses", statusDao.findAll());
+            model.addAttribute("methods", methodDao.findAll());
+            model.addAttribute("categories", categoryDao.findAll());
+
             return "ticket/add";
 
         }
         Priority priority = priorityDao.findOne(priorityId);
+        Status status = statusDao.findOne(statusId);
+        Method method = methodDao.findOne(methodId);
+        Category category = categoryDao.findOne(categoryId);
+
         newTicket.setPriority(priority);
+        newTicket.setStatus(status);
+        newTicket.setMethod(method);
+        newTicket.setCategory(category);
         ticketDao.save(newTicket);
         return "ticket/view";
 
@@ -65,6 +87,9 @@ public class TicketController {
         model.addAttribute("title", "Edit Ticket");
         model.addAttribute("ticket", ticketDao.findOne(ticketId));
         model.addAttribute("priorities", priorityDao.findAll());
+        model.addAttribute("statuses", statusDao.findAll());
+        model.addAttribute("methods", methodDao.findAll());
+        model.addAttribute("categories", categoryDao.findAll());
 
         return "ticket/edit";
 
@@ -73,7 +98,8 @@ public class TicketController {
     }
 
     @RequestMapping(value = "edit/{ticketId}", method = RequestMethod.POST)
-    public String editPost(@PathVariable ("ticketId")  Integer ticketId,Model model,@ModelAttribute @Valid Ticket newTicket,@RequestParam int priorityId, Errors errors) {
+    public String editPost(@PathVariable ("ticketId")  Integer ticketId,Model model,@ModelAttribute @Valid Ticket newTicket,@RequestParam int priorityId,
+                           @RequestParam int statusId,@RequestParam int methodId,@RequestParam int categoryId, Errors errors) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Edit Ticket");
             //model.addAttribute("priorities", priorityDao.findAll());
@@ -87,9 +113,21 @@ public class TicketController {
         ticket.setDescription(ticket.getDescription());
         ticket.setResolution(ticket.getResolution());
         ticket.setPriority(priorityDao.findOne(priorityId));
+        ticket.setStatus(statusDao.findOne(statusId));
+        ticket.setMethod(methodDao.findOne(methodId));
+        ticket.setCategory(categoryDao.findOne(categoryId));
         Priority priority = priorityDao.findOne(priorityId);
         priority.setName(priority.getName());
+        Status status = statusDao.findOne(statusId);
+        status.setName(status.getName());
+        Method method = methodDao.findOne(methodId);
+        method.setName(method.getName());
+        Category category = categoryDao.findOne(categoryId);
+        category.setName(category.getName());
         newTicket.setPriority(priority);
+        newTicket.setStatus(status);
+        newTicket.setMethod(method);
+        newTicket.setCategory(category);;
         ticketDao.save(newTicket);
 
 
@@ -105,19 +143,19 @@ public class TicketController {
        model.addAttribute("ticket",ticket);
        return "ticket/view";
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -41,6 +41,30 @@
                     th:value="${priority.id}"></option>
         </select>
     </div>
+    <div class="form-group">                   <!--This loops over the list of categories, using the name and id properties to set up each value. -->
+        <label th:for="type">Status</label>
+        <select name="statusId">
+            <option th:each="status : ${statuses}"
+                    th:text="${status.name}"
+                    th:value="${status.id}"></option>
+        </select>
+    </div>
+    <div class="form-group">                   <!--This loops over the list of categories, using the name and id properties to set up each value. -->
+        <label th:for="type">Method</label>
+        <select name="methodId">
+            <option th:each="method : ${methods}"
+                    th:text="${method.name}"
+                    th:value="${method.id}"></option>
+        </select>
+    </div>
+    <div class="form-group">                   <!--This loops over the list of categories, using the name and id properties to set up each value. -->
+        <label th:for="type">Category</label>
+        <select name="categoryId">
+            <option th:each="category : ${categories}"
+                    th:text="${category.name}"
+                    th:value="${category.id}"></option>
+        </select>
+    </div>
 
 
     <input type="submit" value="Update Ticket" />

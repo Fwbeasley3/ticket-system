@@ -39,7 +39,7 @@
         </td>
         <td th:text="${ticket.location}"></td>
         <td th:text="${ticket.priority.name}"></td>
-        <td ></td>
+        <td th:text="${ticket.status.name}"></td>
         <td th:text="${ticket.date}"></td>
         <td>
             <a th:href="@{'/ticket/edit/' + ${ticket.id}}">Edit</a>

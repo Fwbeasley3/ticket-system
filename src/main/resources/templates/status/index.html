@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<ul>
+    <li th:each="status : ${statuses}" th:text="${status.name}"> </li>
+</ul>
+<div>
+    <a href="/status/add">Add Status</a>
+
+</div>
+
+</body>
+</html>

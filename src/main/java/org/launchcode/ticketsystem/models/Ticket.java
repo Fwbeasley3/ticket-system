@@ -2,6 +2,8 @@ package org.launchcode.ticketsystem.models;
 
 
 
+import org.launchcode.ticketsystem.models.Method;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -37,7 +39,14 @@ public class Ticket {
     @ManyToOne
     private Priority priority;      //when a Ticket object is stored, this column will contain the id of its priority object. The data for the priority object itself will go in the table for the Priority class.
 
+    @ManyToOne
+    private Status status;
 
+    @ManyToOne
+    private Method method;
+
+    @ManyToOne
+    private Category category;
 
 
 
@@ -121,5 +130,29 @@ public class Ticket {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Method getMethod() {
+        return method;
+    }
+
+    public void setMethod(Method method) {
+        this.method = method;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

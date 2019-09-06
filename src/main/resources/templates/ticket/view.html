@@ -18,6 +18,11 @@
 <p th:text="'Subject: ' + ${ticket.subject}" />
 <p th:text="'Description: ' + ${ticket.description}" />
 <p th:text="'Resolution: ' + ${ticket.resolution}" />
+<p th:text="'Priority: ' + ${ticket.priority.name}" />
+<p th:text="'Status: ' + ${ticket.status.name}" />
+<p th:text="'Method: ' + ${ticket.method.name}" />
+<p th:text="'Category: ' + ${ticket.category.name}" />
+
 
 
 

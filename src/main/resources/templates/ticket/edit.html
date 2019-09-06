@@ -41,6 +41,27 @@
                 th:value="${priority.id}"></option>
     </select>
 
+    <label th:for="type">Status</label>
+    <select name="statusId">
+        <option th:each="status : ${statuses}"
+                th:text="${status.name}"
+                th:value="${status.id}"></option>
+    </select>
+
+    <label th:for="type">Method</label>
+    <select name="methodId">
+        <option th:each="method : ${methods}"
+                th:text="${method.name}"
+                th:value="${method.id}"></option>
+    </select>
+
+    <label th:for="type">Category</label>
+    <select name="categoryId">
+        <option th:each="category : ${categories}"
+                th:text="${category.name}"
+                th:value="${category.id}"></option>
+    </select>
+
     <input type="hidden" name="id" th:value="*{id}" />
     <input type="submit" value="Update" />
 
