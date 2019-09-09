@@ -2,11 +2,44 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
+<body>
 
-<h1 th:text="'Edit \'' + ${ticket.subject} + '\' (ID: ' + ${ticket.id} + ')'"></h1>
+
 
 <nav th:replace="fragments :: navigation"></nav>
+<h1 th:text="'Edit \'' + ${ticket.subject} + '\' (ID: ' + ${ticket.id} + ')'"></h1>
+
+<label th:for="type">Priority</label>
+<select name="priorityId">
+    <option th:each="priority : ${priorities}"
+            th:text="${priority.name}"
+            th:value="${priority.id}"></option>
+</select>
+
+<label th:for="type">Status</label>
+<select name="statusId">
+    <option th:each="status : ${statuses}"
+            th:text="${status.name}"
+            th:value="${status.id}"></option>
+</select>
+
+<label th:for="type">Method</label>
+<select name="methodId">
+    <option th:each="method : ${methods}"
+            th:text="${method.name}"
+            th:value="${method.id}"></option>
+</select>
+
+<label th:for="type">Category</label>
+<select name="categoryId">
+    <option th:each="category : ${categories}"
+            th:text="${category.name}"
+            th:value="${category.id}"></option>
+</select>
+
+<input type="hidden" name="id" th:value="*{id}" />
+<input type="submit" value="Update" />
+
 
 <form method="post" style="max-width:600px;" th:object="${ticket}">
     <div class="form-group">
@@ -34,40 +67,14 @@
         <textarea rows="10" class="form-control" th:field="*{resolution}" />
         <span th:errors="*{resolution}" class="error"></span>
     </div>
-    <label th:for="type">Priority</label>
-    <select name="priorityId">
-        <option th:each="priority : ${priorities}"
-                th:text="${priority.name}"
-                th:value="${priority.id}"></option>
-    </select>
 
-    <label th:for="type">Status</label>
-    <select name="statusId">
-        <option th:each="status : ${statuses}"
-                th:text="${status.name}"
-                th:value="${status.id}"></option>
-    </select>
-
-    <label th:for="type">Method</label>
-    <select name="methodId">
-        <option th:each="method : ${methods}"
-                th:text="${method.name}"
-                th:value="${method.id}"></option>
-    </select>
-
-    <label th:for="type">Category</label>
-    <select name="categoryId">
-        <option th:each="category : ${categories}"
-                th:text="${category.name}"
-                th:value="${category.id}"></option>
-    </select>
 
     <input type="hidden" name="id" th:value="*{id}" />
     <input type="submit" value="Update" />
 
-
-
 </form>
+
+
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+.form-group {
+    padding-left: 25px;
+}
+
+h1 {
+    padding: 25px;
+}
+
+.column {
+
+    float: right;
+    width: 50%;
+
+}
+
+#dropdownMenuButton1 {
+    background-color: blue;
+
+}
+
+.drop-down {
+    padding-top: 150px;
+    width: auto;
+
+
+}
+select {
+    width: auto;
+}
