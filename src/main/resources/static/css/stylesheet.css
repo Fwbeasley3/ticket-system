@@ -5,25 +5,119 @@
 h1 {
     padding: 25px;
 }
+.left {
+padding-top : 20%;
+}
 
-.column {
+.view {
+padding-left : 20px;
+font-size: 30px;
+}
 
-    float: right;
-    width: 50%;
+.msg {
+color:red;
+}
+
+.login {
+ left: 50%;
+       top: 70%;
+       margin-left: -15%;
+       position: absolute;
+       margin-top: -25%;
+}
+
+.login-greet {
+ left: 50%;
+       top: 60%;
+       margin-left: -15%;
+       position: absolute;
+       margin-top: -25%;
+       font-size: 50px;
+
 
 }
+
+
+.error {
+    color: red;
+}
+.add {
+     left: 50%;
+       top: 60%;
+       margin-left: -25%;
+       position: absolute;
+       margin-top: -25%;
+
+}
+
+.edit {
+     left: 50%;
+       top: 60%;
+       margin-left: -25%;
+       position: absolute;
+       margin-top: -25%;
+
+}
+
+.ticket-submit{
+display: block;
+width:30%;
+margin:0 auto;
+}
+input[type='submit']{
+display: block;
+width:30%;
+margin:0 auto;
+
+}
+
+
+}
+
+.add-ticket {
+     left: 50%;
+           top: 60%;
+           margin-left: -15%;
+           position: absolute;
+           margin-top: -27%;
+           font-size: 50px;
+
+}
+
+}
+
+
+
 
 #dropdownMenuButton1 {
     background-color: blue;
 
 }
 
-.drop-down {
-    padding-top: 150px;
-    width: auto;
 
+
+.drop-down {
+    padding-top: 100px;
+    width: auto;
+    flex: 40%;
+    padding-left : 70px;
+
+.left {
+float: left;
+}
+
+.right {
+float: right;
 
 }
+
+
+
+
 select {
     width: auto;
 }
+
+
+
+

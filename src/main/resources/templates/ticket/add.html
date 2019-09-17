@@ -2,83 +2,87 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
+
 <body>
 
-
-
 <nav th:replace="fragments :: navigation"></nav>
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="${title}" class="add-ticket" >Default Title</h1>
 
-<div class=" column">
-    <div class="drop-down1">
-<label th:for="type">Priority</label>
-<select name="priorityId">
-    <option th:each="priority : ${priorities}"
-            th:text="${priority.name}"
-            th:value="${priority.id}"></option>
-</select>
-    </div>
-    <div class="drop-down">
-<label th:for="type">Status</label>
-<select name="statusId">
-    <option th:each="status : ${statuses}"
-            th:text="${status.name}"
-            th:value="${status.id}"></option>
-</select>
-    </div>
-    <div class="drop-down">
-<label th:for="type">Method</label>
-<select name="methodId">
-    <option th:each="method : ${methods}"
-            th:text="${method.name}"
-            th:value="${method.id}"></option>
-</select>
-    </div>
-    <div class ="drop-down">
-<label th:for="type">Category</label>
-<select name="categoryId">
-    <option th:each="category : ${categories}"
-            th:text="${category.name}"
-            th:value="${category.id}"></option>
-</select>
-    </div>
-</div>
+<form method="post" style="max-width:600px;" th:object="${ticket}" class = "add">
 
-<div class="column">
-<form method="post" style="max-width:600px;" th:object="${ticket}">
-    <div class="form-group">
-        <label th:for="requester">Requester</label>
-        <input class="form-control" th:field="*{requester}"  />
-        <span th:errors="*{requester}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="location">Location</label>
-        <input class="form-control" th:field="*{location}" />
-        <span th:errors="*{location}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="subject">Subject</label>
-        <input class="form-control" th:field="*{subject}" />
-        <span th:errors="*{subject}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="description">Description</label>
-        <textarea rows="10" class="form-control" th:field="*{description}" />
-        <span th:errors="*{description}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="resolution">Resolution</label>
-        <textarea rows="10" class="form-control" th:field="*{resolution}" />
-        <span th:errors="*{resolution}" class="error"></span>
-    </div>
+        <div class="row">
+            <div class="drop-down">
+                <label th:for="type">Priority</label>
+                <select name="priorityId">
+                    <option th:each="priority : ${priorities}"
+                            th:text="${priority.name}"
+                            th:value="${priority.id}"></option>
+                </select>
+            </div>
+            <div class="drop-down">
+                <label th:for="type">Status</label>
+                <select name="statusId">
+                    <option th:each="status : ${statuses}"
+                            th:text="${status.name}"
+                            th:value="${status.id}"></option>
+                </select>
+            </div>
+            <div class="drop-down">
+                <label th:for="type">Method</label>
+                <select name="methodId">
+                    <option th:each="method : ${methods}"
+                            th:text="${method.name}"
+                            th:value="${method.id}"></option>
+                </select>
+            </div>
+            <div class ="drop-down">
+                <label th:for="type">Category</label>
+                <select name="categoryId">
+                    <option th:each="category : ${categories}"
+                            th:text="${category.name}"
+                            th:value="${category.id}"></option>
+                </select>
+            </div>
+
+        </div>
 
 
-    <input type="hidden" name="id" th:value="*{id}" />
-    <input type="submit" value="Update" />
+            <div class="left">
+                <div class="form-group">
+                    <label th:for="requester">Requester</label>
+                    <input class="form-control" th:field="*{requester}"  />
+                    <span th:errors="*{requester}" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:for="location">Location</label>
+                    <input class="form-control" th:field="*{location}" />
+                    <span th:errors="*{location}" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:for="subject">Subject</label>
+                    <input class="form-control" th:field="*{subject}" />
+                    <span th:errors="*{subject}" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:for="description">Description</label>
+                    <textarea rows="10" class="form-control" th:field="*{description}" />
+                    <span th:errors="*{description}" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:for="resolution">Resolution</label>
+                    <textarea rows="10" class="form-control" th:field="*{resolution}" />
+                    <span th:errors="*{resolution}" class="error"></span>
+                </div>
+
+
+                <input type="hidden" name="id" th:value="*{id}" />
+                <input type="submit" value="Update" />
+        </div>
 
 
 </form>
-</div>
+
+
 
 
 </body>

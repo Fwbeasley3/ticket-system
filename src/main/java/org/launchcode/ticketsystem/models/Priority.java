@@ -1,5 +1,6 @@
 package org.launchcode.ticketsystem.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.launchcode.ticketsystem.models.Ticket;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class Priority {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty(message = "Please enter priority")
     @Size(min=3, max=15)
     private String name;
 

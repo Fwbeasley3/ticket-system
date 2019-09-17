@@ -1,5 +1,7 @@
 package org.launchcode.ticketsystem.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,7 +15,7 @@ public class Status {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty(message = "Please enter status")
     @Size(min=3, max=15)
     private String name;
 

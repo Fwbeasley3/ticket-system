@@ -2,6 +2,7 @@ package org.launchcode.ticketsystem.models;
 
 
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.launchcode.ticketsystem.models.Method;
 
 import javax.persistence.*;
@@ -18,21 +19,26 @@ public class Ticket {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty(message = "Please enter subject")
     @Size(min = 5, max = 60)
     private String subject;         //ticket subject
 
 
-    @NotNull
+    @NotEmpty(message = "Please enter description")
+    @Size(min = 5, max = 250)
     private String description;//ticket description
 
-    @NotNull
+    @NotEmpty(message = "Please enter requester")
+    @Size(min = 3, max = 21)
     private String requester;
 
-    @NotNull
+    @NotEmpty(message = "Please enter location")
+    @Size(min = 3, max = 21)
     private String location;
 
+    @Size(min = 5, max = 250)
     private String resolution;
+
 
     private Date date = new Date();
 

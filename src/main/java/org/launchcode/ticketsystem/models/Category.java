@@ -2,6 +2,8 @@ package org.launchcode.ticketsystem.models;
 
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,7 +17,7 @@ public class Category {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty(message = "Please enter category")
     @Size(min = 3, max = 15)
     private String name;
 
