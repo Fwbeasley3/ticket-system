@@ -36,7 +36,7 @@ public class Ticket {
     @Size(min = 3, max = 21)
     private String location;
 
-    @Size(min = 5, max = 250)
+    @Size( max = 250)
     private String resolution;
 
 

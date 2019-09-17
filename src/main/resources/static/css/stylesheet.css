@@ -9,10 +9,28 @@ h1 {
 padding-top : 20%;
 }
 
+.login-back {
+background-color: red;
+
+}
+
 .view {
 padding-left : 20px;
 font-size: 30px;
 }
+
+.add-header{
+ left: 50%;
+           top: 60%;
+           margin-left: -15%;
+           position: absolute;
+           margin-top: -27%;
+           font-size: 50px;
+
+
+
+}
+
 
 .msg {
 color:red;
@@ -24,6 +42,12 @@ color:red;
        margin-left: -15%;
        position: absolute;
        margin-top: -25%;
+
+
+
+
+
+
 }
 
 .login-greet {
@@ -35,8 +59,13 @@ color:red;
        font-size: 50px;
 
 
+
+
 }
 
+.nav-item {
+padding-left : 35px;;
+}
 
 .error {
     color: red;
@@ -49,6 +78,7 @@ color:red;
        margin-top: -25%;
 
 }
+
 
 .edit {
      left: 50%;
@@ -72,7 +102,7 @@ margin:0 auto;
 }
 
 
-}
+
 
 .add-ticket {
      left: 50%;
@@ -84,7 +114,6 @@ margin:0 auto;
 
 }
 
-}
 
 
 

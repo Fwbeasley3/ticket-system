@@ -6,9 +6,10 @@
 <body>
 
 <nav th:replace="fragments :: navigation"></nav>
-<h1 th:text="${title}" class="add-ticket" >Default Title</h1>
+<h1 th:text="${title}" class="add-header ">Default Title</h1>
 
-<form method="post" style="max-width:600px;" th:object="${ticket}" class = "add">
+<h1 th:text="${msg}" class="msg"></h1>
+<form method="post" style="max-width:600px;" th:object="${ticket}" class="add">
 
         <div class="row">
             <div class="drop-down">
@@ -76,14 +77,20 @@
 
 
                 <input type="hidden" name="id" th:value="*{id}" />
-                <input type="submit" value="Update" />
+                <input type="submit" onclick="clicked(event)" value="Update" />
         </div>
 
 
 </form>
-
+<script>
+function clicked(e)
+{
+    if(!confirm('Update ticket?'))e.preventDefault();
+}
+</script>
 
 
 
 </body>
+
 </html>

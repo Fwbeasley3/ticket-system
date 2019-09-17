@@ -8,7 +8,7 @@
 <nav th:replace="fragments :: navigation"></nav>
 <h1 th:text="'Edit \'' + ${ticket.subject} + '\' (ID: ' + ${ticket.id} + ')'"></h1>
 
-<form method="post" style="max-width:600px;" th:object="${ticket}" class ="edit">
+<form method="post" style="max-width:600px;" th:object="${ticket}" class ="add">
     <div class="row">
         <div class="drop-down">
             <label th:for="type">Priority</label>
@@ -75,11 +75,18 @@
 
 
         <input type="hidden" name="id" th:value="*{id}" />
-        <input type="submit" value="Update" />
+        <input type="submit" onclick="clicked(event)" value="Update" />
     </div>
 
 
 </form>
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Update ticket?'))e.preventDefault();
+}
+</script>
 
 
 

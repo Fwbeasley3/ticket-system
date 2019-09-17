@@ -17,9 +17,18 @@
     </div>
 
 
-    <input type="submit" value="Add Status" />
+    <input type="submit" onclick="clicked(event)"  value="Add Status" />
 
 </form>
+
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Add Status?'))e.preventDefault();
+}
+</script>
+
 
 </body>
 </html>

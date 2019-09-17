@@ -58,30 +58,32 @@ public class TicketController {
     public String processAddTicketForm(@ModelAttribute @Valid Ticket newTicket, Errors errors, @RequestParam int priorityId,
                                        @RequestParam int statusId, @RequestParam int methodId, @RequestParam int categoryId, Model model) {
 
-       if (errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Add Ticket");
             model.addAttribute("priorities", priorityDao.findAll());
             model.addAttribute("statuses", statusDao.findAll());
             model.addAttribute("methods", methodDao.findAll());
             model.addAttribute("categories", categoryDao.findAll());
-            return "ticket/add";
+
+                return "ticket/add";
 
 
+            }
+
+            Priority priority = priorityDao.findOne(priorityId);
+            Status status = statusDao.findOne(statusId);
+            Method method = methodDao.findOne(methodId);
+            Category category = categoryDao.findOne(categoryId);
+
+            newTicket.setPriority(priority);
+            newTicket.setStatus(status);
+            newTicket.setMethod(method);
+            newTicket.setCategory(category);
+            ticketDao.save(newTicket);
+            return "ticket/view";
 
         }
-        Priority priority= priorityDao.findOne(priorityId);
-        Status status = statusDao.findOne(statusId);
-        Method method = methodDao.findOne(methodId);
-        Category category = categoryDao.findOne(categoryId);
 
-        newTicket.setPriority(priority);
-        newTicket.setStatus(status);
-        newTicket.setMethod(method);
-        newTicket.setCategory(category);
-        ticketDao.save(newTicket);
-        return "ticket/view";
-
-    }
 
     @RequestMapping(value= "edit/{ticketId}", method = RequestMethod.GET)
     public String editPost(@PathVariable int ticketId, Model model){

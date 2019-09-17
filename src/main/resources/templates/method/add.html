@@ -17,9 +17,16 @@
     </div>
 
 
-    <input type="submit" value="Add Method" />
+    <input type="submit" onclick="clicked(event)" value="Add Method" />
 
 </form>
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Add Method?'))e.preventDefault();
+}
+</script>
 
 </body>
 </html>

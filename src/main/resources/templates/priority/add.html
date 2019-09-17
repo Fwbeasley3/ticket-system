@@ -17,9 +17,16 @@
     </div>
 
 
-    <input type="submit" value="Add Priority" />
+    <input type="submit" onclick="clicked(event)" value="Add Priority" />
 
 </form>
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Add Priority?'))e.preventDefault();
+}
+</script>
 
 </body>
 </html>

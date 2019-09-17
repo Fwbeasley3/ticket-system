@@ -10,6 +10,7 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <div class = "view">
+    <a href="#" th:href="@{/ticket/edit/{id}/(id=${ticket.id})}">Edit </a>
 <p th:text="'ID: ' + ${ticket.id}" />
 
 <p th:text="'Requester: ' + ${ticket.requester}" />
@@ -23,6 +24,10 @@
 <p th:text="'Method: ' + ${ticket.method.name}" />
 <p th:text="'Category: ' + ${ticket.category.name}" />
 </div>
+
+
+
+
 
 
 
